@@ -1,0 +1,14 @@
+{
+  "name": "create-github-release",
+  "version": "0.1.0",
+  "description": "Creates a new Github release for the given repo based on the commits between the last two tags",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Collings",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^15.2.6"
+  }
+}
