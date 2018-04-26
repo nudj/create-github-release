@@ -10,8 +10,14 @@ octokit.authenticate({ type: 'token', token })
 async function run () {
   try {
     const tagsResults = await octokit.repos.getTags({ owner, repo })
-    const latestTag = tagsResults.data[0]
-    const penultimateTag = tagsResults.data[1]
+    const semverRegex = /^[0-9.]+$/
+    const semverTags = tagsResults.data
+      .filter(tag => tag.name.match(semverRegex))
+      .slice(0, 2)
+    const [
+      latestTag,
+      penultimateTag
+    ] = semverTags
 
     const latestCommitResult = await octokit.repos.getCommit({
       owner,
